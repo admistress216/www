@@ -1,6 +1,6 @@
 <?php
 /**
- * 1.json化数据:
+ * 1.json :
  */
 $response = Yii::$app->response;
 $response->format=\yii\web\Response::FORMAT_JSON;
@@ -11,5 +11,20 @@ $response->data = [
 $response->send();
 
 /**
- * 2.
+ * 2.table prefix:
  */
+$arr = [
+    'tablePrefix' => 'm_', //db.php配置
+    '{{%room}}', //models中的tableName
+];
+
+/**
+ * 3.alias effect
+ */
+$arr = [
+    'include file quickly',
+    'config method' => [
+        'config.php' => '\'@test\' => \'@vendor/../test\',',
+        'bootstrap.php' => 'Yii::setAlias(\'test\', FILEPATH)'
+    ]
+];
