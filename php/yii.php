@@ -350,45 +350,45 @@ use yii\widgets\LinkPager;
 <?php
 /**
  * 12.别名
-yii2系统定义的常用路径别名
-@yii 表示Yii框架所在的目录，也是 yii\BaseYii 类文件所在的位置；
-@app 表示正在运行的应用的根目录，一般是 digpage.com/frontend ；物理路径
-@vendor 表示Composer第三方库所在目录，一般是 @app/vendor 或 @app/../vendor ；
-@bower 表示Bower第三方库所在目录，一般是 @vendor/bower ；
-@npm 表示NPM第三方库所在目录，一般是 @vendor/npm ；
-@runtime 表示正在运行的应用的运行时用于存放运行时文件的目录，一般是 @app/runtime ；
-@webroot 表示正在运行的应用的入口文件 index.php 所在的目录，一般是 @app/web；物理路径
-@web URL别名，表示当前应用的根URL，主要用于前端。相对路径
-@common 表示通用文件夹；
-@frontend 表示前台应用所在的文件夹；
-@backend 表示后台应用所在的文件夹；
-@console 表示命令行应用所在的文件夹；
-其他使用Composer安装的Yii扩展注册的二级别名
-Yii使用 Yii::$aliases[] 来保存别名
-
-Yii::setAlias() 定义别名
-
-Yii::getAlias()获取别名
-
-例如：
-
-dirname(Yii::$app->request->getScriptFile())
-Yii::getAlias("@webroot")
-
-这两个的返回值是一样的
-
-@webroot这个别名是在yiisoft/yii2/web/Application.php中定义的
-
-小结
-别名需在使用前定义，因此通常来讲，定义别名应当在放在应用的初始化阶段。
-别名必然以 @ 打头。
-别名的定义可以使用之前已经定义过的别名。
-别名在储存时，至多只分成两级，第一级的键是根别名。 第二级别名的键是完整的别名，而不是去除根别名后剩下的所谓的“二级”别名。
-Yii通过分层的树结构来保存别名最主要是为高效检索作准备。
-很多地方可以直接使用别名，而不用调用 Yii::getAlias() 转换成真实的路径或URL。如Yii::getAlias("@app")
-别名解析时，优先匹配较长的别名。
-Yii预定义了许多常用的别名供编程时使用。
-使用别名时，要将别名放在最前面，不能放在中间。
+ *yii2系统定义的常用路径别名
+ *@yii 表示Yii框架所在的目录，也是 yii\BaseYii 类文件所在的位置；
+ *@app 表示正在运行的应用的根目录，一般是 digpage.com/frontend ；物理路径
+ *@vendor 表示Composer第三方库所在目录，一般是 @app/vendor 或 @app/../vendor ；
+ *@bower 表示Bower第三方库所在目录，一般是 @vendor/bower ；
+ *@npm 表示NPM第三方库所在目录，一般是 @vendor/npm ；
+ *@runtime 表示正在运行的应用的运行时用于存放运行时文件的目录，一般是 @app/runtime ；
+ *@webroot 表示正在运行的应用的入口文件 index.php 所在的目录，一般是 @app/web；物理路径
+ *@web URL别名，表示当前应用的根URL，主要用于前端。相对路径
+ *@common 表示通用文件夹；
+ *@frontend 表示前台应用所在的文件夹；
+ *@backend 表示后台应用所在的文件夹；
+ *@console 表示命令行应用所在的文件夹；
+ *其他使用Composer安装的Yii扩展注册的二级别名
+ *Yii使用 Yii::$aliases[] 来保存别名
+ *
+ *Yii::setAlias() 定义别名
+ *
+ *Yii::getAlias()获取别名
+ *
+ *例如：
+ *
+ *dirname(Yii::$app->request->getScriptFile())
+ *Yii::getAlias("@webroot")
+ *
+ *这两个的返回值是一样的
+ *
+ *@webroot这个别名是在yiisoft/yii2/web/Application.php中定义的
+ *
+ *小结
+ *别名需在使用前定义，因此通常来讲，定义别名应当在放在应用的初始化阶段。
+ *别名必然以 @ 打头。
+ *别名的定义可以使用之前已经定义过的别名。
+ *别名在储存时，至多只分成两级，第一级的键是根别名。 第二级别名的键是完整的别名，而不是去除根别名后剩下的所谓的“二级”别名。
+ *Yii通过分层的树结构来保存别名最主要是为高效检索作准备。
+ *很多地方可以直接使用别名，而不用调用 Yii::getAlias() 转换成真实的路径或URL。如Yii::getAlias("@app")
+ *别名解析时，优先匹配较长的别名。
+ *Yii预定义了许多常用的别名供编程时使用。
+ *使用别名时，要将别名放在最前面，不能放在中间。
  */
 
 
