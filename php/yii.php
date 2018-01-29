@@ -155,6 +155,7 @@ Html::activeInput( //类似的还有activeTextInput/activePasswordInput/activeHi
 
 /**
  * 8.模型验证
+ * load主要作用:给model内数据库字段赋值
  * load方法可以直接加载$_POST等数据,而Post的数据下标必须跟Model的
  * 类名一致,例如Article::load($_POST)等于加载$_POST['Article']
  * 里面的数据,另外可以load的字段必须出现在rules方法的数组中,不然也
