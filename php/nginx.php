@@ -80,3 +80,80 @@ $arr = [
     '
 ];
 
+/**
+ * 4.logs日志管理
+ */
+$arr = [
+    'nginx可以针对不同的server做不同的log',
+    'access_log logs/host.accesss.log main' => '说明该server他的访问日志的文件是
+        logs/host.access.log,使用的格式是main格式', //单个server内配置
+    'log_format  main  \'$remote_addr - $remote_user [$time_local] "$request" \'
+                       \'$status $body_bytes_sent "$http_referer" \'
+                       \'"$http_user_agent" "$http_x_forwarded_for"\';',
+    'main格式' => '用于记录以上选项',
+    'main内选项解释' => [
+        '$remote_addr' => '远程ip',
+        '$remote_user[$time_local]' => '访问时间',
+        '$request' => 'post/get',
+        '$status' => '404,200等状态码',
+        '$body_byte_sent' => 'body体字节数',
+        '$http_referer' => '访问来源',
+        '$http_user_agent' => '用户代理(服务器类型等)信息',
+        '$http_x_forwarded_for' => '中间代理x'
+    ],
+];
+
+/**
+ * 5.定时任务与日志切割
+ */
+$arr = [
+    'date命令' => 'date -d yesterday +%y%m%d', //y:年份的后两位
+    'crontab命令' => '分 时 日 月 周',
+    'shell script' => '
+        #!/bin/bash
+        LOGPATH=/usr/local/nginx/logs/z.com.access.log
+        BASEPATH=/data/$(date -d yesterday +%Y%m)
+        
+        mkdir -p $BASEPATH
+        bak=$BASEPATH/$(date -d yesterday +%d%H%M).zcom.access.log
+        mv LOGPATH $bak
+        touch $LOGPATH //继续往$bak里写,与linux文件机制inode有关
+        
+        kill -USR1 $(cat /usr/local/nginx/logs/nginx.pid) //重写新的日志文件
+    ',
+    'crontab' => '*/1 * * * * sh /data/runlog.sh', //crontab命令
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
