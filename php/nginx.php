@@ -98,7 +98,7 @@ $arr = [
         '$status' => '404,200等状态码',
         '$body_byte_sent' => 'body体字节数',
         '$http_referer' => '访问来源',
-        '$http_user_agent' => '用户代理(服务器类型等)信息',
+        '$http_user_agent' => '用户代理(浏览器类型等)信息',
         '$http_x_forwarded_for' => '中间代理x'
     ],
 ];
