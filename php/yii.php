@@ -392,6 +392,19 @@ use yii\widgets\LinkPager;
  *使用别名时，要将别名放在最前面，不能放在中间。
  */
 
+/**
+ * 13.打印sql
+ *
+$query = Playnum::find()
+->select('time, sum(`play_times`) as times')
+->where($where)
+->groupBy('time')
+->asArray()
+->all();
+$commandQuery = clone $query;
+echo $commandQuery->createCommand()->getRawSql();
+ */
+
 
 
 
