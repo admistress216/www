@@ -192,7 +192,14 @@ index index.html;
 
 $arr = [ //重写中用到的指令
     'if (条件){重写模式}', //设定条件再进行重写
-    '例子' => 'if ($remote_addr = 192.168.200.1) { return 403 }',
+    '例子' => [
+        'if ($remote_addr = 192.168.200.1) { return 403 }',
+        'if ($http_user_agent ~ Chrome){
+                        rewrite ^.*$ /ie.html;  //只要是谷歌浏览器,无论是任何内容都跳转到ie.html下(所在目录为root定)
+                        break; //防止一直重定向
+                }
+        '
+    ],
 ];
 
 $arr = [ //条件写法
