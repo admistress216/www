@@ -198,7 +198,14 @@ $arr = [ //重写中用到的指令
                         rewrite ^.*$ /ie.html;  //只要是谷歌浏览器,无论是任何内容都跳转到ie.html下(所在目录为root定)
                         break; //防止一直重定向
                 }
-        '
+        ',
+        ///usr/local/nginx/html/abc.html
+        'fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;', //fastcgi.conf文件中查询各个变量的含义
+        'if (!-e $document_root$fastcgi_script_name){ //脚本文件不存在,重写到404.html
+                        rewrite ^.*$ /404.html;
+                        break;
+                }
+',
     ],
 ];
 
@@ -209,8 +216,17 @@ $arr = [ //条件写法
     '-f -d -e' => '判断是否为文件,为目录,是否存在',
 ];
 
-$arr = [ //重写模式
-
+$arr = [ //set是设置变量用的,可以用来达到多条件判断时作标志用,达到apache下的rewrite_condition的效果
+    'if ($http_user_agent ~* msie) {
+        set $isid 1;
+    }
+    if ($fastcgi_script_name = ie.html) {
+        set $isie 0;
+    }
+    if ($isie 1) {
+        rewrite ^.*$ ie.html
+    }
+    ',
 ];
 
 
