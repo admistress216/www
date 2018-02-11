@@ -229,7 +229,47 @@ $arr = [ //set是设置变量用的,可以用来达到多条件判断时作标�
     ',
 ];
 
+/**
+ * 8.nginx+php编译
+ */
+$arr = [
+    'apache与nginx的区别' => 'apache一般是把php当做自己的模块来启动的
+                                而nginx则是把http请求变量(如get,user_agent等)转发给
+                                php独立进程,即php独立进程与nginx进行通信.称为fastcgi
+                                运行方式',
+    'location ~ \.php$ {
+            root           html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            include        fastcgi_params;
+        }' => '
+            1.碰到php文件,
+            2.把根目录定位到html,
+            3.把请求上下文转交给9000端口的php进程,
+            4.并告诉php进程,当前的脚本是$document_root(定位的html目录)$fastcgi_scriptname
+        ',
+    '
+准备:
+yum install mysql mysql-devel //装客户端
+yum -y install mysql-server //装服务端
+yum -y install gd gd-devel
+yum install ttf
+yum install freetype
 
+编译php(连接mysql,gd,ttf并以fpm/fastcgi方式运行):
+./configure --prefix=/usr/local/fastphp --with-mysql=mysqlnd \
+--enable-mysqlnd \
+--with-gd \
+--enable-gd-native-ttf \
+--enable-gd-jis-conv \
+--enable-fpm      #作用:产生php-fpm进程管理器以及配置文件
+
+cp /usr/local/src/php-5.6.33/php.ini-development /usr/local/fastphp/lib/php.ini
+cp /usr/local/fastphp/etc/php-fpm.conf.default /usr/local/fastphp/etc/php-fpm.conf
+./php-fpm && ps aux | grep php
+service mysqld start #启动mysql',
+];
 
 
 
