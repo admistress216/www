@@ -23,6 +23,7 @@ $arr = [
  */
 $arr = [
     "$this->load->library('someclass')",
+    "$this->load->library('someclass', ['type' => 'large', 'color' => 'red'])", //载入类时初始化参数
     "$this->someclass->some_function()",
 
     "$this->load->library('form_validation)",//加载form-validation类
@@ -57,6 +58,10 @@ $arr = [
     "$this->db->insert($table, $data)", //插入数据,$table数据表,$data数据
 ];
 
+/**
+ * 6.为自定义类库和辅助函数设定前缀
+ */
+$config['subclass_prefix'] = 'MY_';
 
 
 
