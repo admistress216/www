@@ -63,10 +63,26 @@ $arr = [
  */
 $config['subclass_prefix'] = 'MY_';
 
+/**
+ * 7. 钩子的使用
+ */
+$config['enable_hooks'] = TRUE; //开启钩子
+$hook['pre_controller'] = array(
+    'class'    => 'MyClass',
+    'function' => 'Myfunction',
+    'filename' => 'Myclass.php',
+    'filepath' => 'hooks',
+    'params'   => array('beer', 'wine', 'snacks')
+); //定义钩子,application/config/hooks.php
 
-
-
-
+/**
+ * 8.错误处理
+ */
+$arr = [
+    "show_error()", //显示错误
+    "show_404()", //显示404
+    "log_message",//日志记录,需配置$config['log_threshold'];
+];
 
 
 
