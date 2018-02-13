@@ -229,6 +229,13 @@ $arr = [ //set是设置变量用的,可以用来达到多条件判断时作标�
     ',
 ];
 
+$arr = [
+    'location /ecshop {
+                root html/;
+                rewrite "goods-(\d{1,7})\.html" /ecshop/goods.php?id=$1; //对/ecshop文件夹下的goods-12.html进行重写,写为html目录下/ecshop/goods.php?id=12
+        }'
+];
+
 /**
  * 8.nginx+php编译
  */
@@ -268,9 +275,21 @@ yum install freetype
 cp /usr/local/src/php-5.6.33/php.ini-development /usr/local/fastphp/lib/php.ini
 cp /usr/local/fastphp/etc/php-fpm.conf.default /usr/local/fastphp/etc/php-fpm.conf
 ./php-fpm && ps aux | grep php
-service mysqld start #启动mysql',
+service mysqld start #启动mysql
+pkill -9 php-fpm #杀死php进程',
 ];
 
+/**
+ * 9.localhost与127.0.0.1的区别
+ */
+$arr = [
+    'localhost' => '是用socket连接数据库的,所以需配置php.ini中mysql.default_socket=/var/lib/mysql/mysql.sock',
+    '127.0.0.1' => '是用tcp连接的'
+];
+
+/**
+ * 10.
+ */
 
 
 
