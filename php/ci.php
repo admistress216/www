@@ -84,6 +84,22 @@ $arr = [
     "log_message",//日志记录,需配置$config['log_threshold'];
 ];
 
+/**
+ * 9.分析器(调试)
+ */
+$arr = [
+    "$this->output->enable_profiler(TRUE/FALSE)", //打开和关闭分析器
+    "$this->input->is_cli_request()", //判断是否是命令行访问
+];
+
+/**
+ * 10.表单
+ */
+$arr = [
+    "$this->form_validation->set_message('rule', 'Error Message');", //设置自己的表单错误信息,也可在lang中设置
+    "<?php echo validation_error();?>",//输出控制器中验证失败的信息(全部表单域)
+    "<?php echo form_error();?>",//输出控制器中验证失败的信息(单个表单域)
+];
 
 
 
