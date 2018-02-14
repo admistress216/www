@@ -1,6 +1,6 @@
 <?php
 /**
- * 1.async同步命令
+ * 1.rsync同步命令
  */
 $arr = [
     '-e + ssh/rsh' => '指定使用rsh或ssh传输数据',
