@@ -288,8 +288,34 @@ $arr = [
 ];
 
 /**
- * 10.
+ * 10.gzip compress
  */
+$arr = ['
+gzip on; #打开gzip
+gzip_buffers 32 4k; #压缩在内存中缓冲32块,每块4k
+gzip_comp_level 6; #压缩级别6
+gzip_min_length 4000; #最少四千字节开始压缩
+gzip_types text/css text/xml application/x-javascript; #压缩的格式
+'];
+
+/**
+ * 11. expires设置
+ */
+$arr = ['
+location ~ image {
+    root html;
+    expires 1d; //缓存1天
+}
+'];
+
+/**
+ * 12. 304原理
+ */
+$arr = ['
+服务器相应文件内容时,同时响应etag标签(内容的签名,内容一变,他也变)和last_modified_since标签,
+浏览器下次去请求时,头信息发送这两个标签,服务器检查文件有没有发生变化,如无,则直接头信息返回etag,last_modified_since.
+'];
+
 
 
 
