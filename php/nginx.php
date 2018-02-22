@@ -263,6 +263,7 @@ yum -y install mysql-server //装服务端
 yum -y install gd gd-devel
 yum install ttf
 yum install freetype
+yum -y install libxml2-devel
 
 编译php(连接mysql,gd,ttf并以fpm/fastcgi方式运行):
 ./configure --prefix=/usr/local/fastphp --with-mysql=mysqlnd \
