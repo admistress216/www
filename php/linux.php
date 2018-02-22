@@ -7,6 +7,7 @@ $arr = [
     '--rsh=command' => '等同于-e',
     '--partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输。',
     '-P' => '等同于--partial',
+    'example' => 'rsync -P --rsh=ssh cnk_tujun@103.240.246.145:/home/cnk_tujun/cnk.sql /users/tujun',
 ];
 
 /**
