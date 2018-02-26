@@ -328,13 +328,14 @@ $arr = ['
 '];
 
 /**
- * 13. 防盗链
+ * 13. 防盗链和禁止访问
  */
 $arr = ['
         valid_referers none www.baidu.com; //只允许无referer和百度访问
         if ($invalid_referer) {
           return 403;
         }
+        deny all; //禁止访问
 '];
 
 
