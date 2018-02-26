@@ -236,6 +236,16 @@ $arr = [
         }'
 ];
 
+$arr = ['
+例：http://localhost:88/test1/test2/test.php?k=v
+$host：localhost
+$server_port：88
+$request_uri：/test1/test2/test.php?k=v
+$document_uri：/test1/test2/test.php
+$document_root：D:\nginx/html
+$request_filename：D:\nginx/html/test1/test2/test.php
+'];
+
 /**
  * 8.nginx+php编译
  */
@@ -315,6 +325,16 @@ location ~ image {
 $arr = ['
 服务器相应文件内容时,同时响应etag标签(内容的签名,内容一变,他也变)和last_modified_since标签,
 浏览器下次去请求时,头信息发送这两个标签,服务器检查文件有没有发生变化,如无,则直接头信息返回etag,last_modified_since.
+'];
+
+/**
+ * 13. 防盗链
+ */
+$arr = ['
+        valid_referers none www.baidu.com; //只允许无referer和百度访问
+        if ($invalid_referer) {
+          return 403;
+        }
 '];
 
 
