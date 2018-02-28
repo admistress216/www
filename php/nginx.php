@@ -275,13 +275,21 @@ yum install ttf
 yum install freetype
 yum -y install libxml2-devel
 
-编译php(连接mysql,gd,ttf并以fpm/fastcgi方式运行):
+编译php(连接mysql,gd,ttf并以fpm/fastcgi方式运行)[nginx方式]:
 ./configure --prefix=/usr/local/fastphp --with-mysql=mysqlnd \
 --enable-mysqlnd \
 --with-gd \
 --enable-gd-native-ttf \
 --enable-gd-jis-conv \
 --enable-fpm      #作用:产生php-fpm进程管理器以及配置文件
+
+[apache方式]:
+./configure --prefix=/usr/local/php --with-mysql=mysqlnd \
+--enable-mysqlnd \
+--with-gd \
+--enable-gd-native-ttf \
+--enable-gd-jis-conv \
+--with-apxs2=/usr/local/httpd/bin/apxs //作用:将php作为apache子模块
 
 cp /usr/local/src/php-5.6.33/php.ini-development /usr/local/fastphp/lib/php.ini
 cp /usr/local/fastphp/etc/php-fpm.conf.default /usr/local/fastphp/etc/php-fpm.conf
@@ -336,6 +344,13 @@ $arr = ['
           return 403;
         }
         deny all; //禁止访问
+'];
+
+/**
+ * 14.反向代理
+ */
+$arr = ['
+proxy_pass http://127.0.0.1:8080
 '];
 
 
