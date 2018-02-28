@@ -353,6 +353,38 @@ $arr = ['
 proxy_pass http://127.0.0.1:8080
 '];
 
+/**
+ * 15.负载均衡
+ * proxy_pass不允许写多个,需要把多台服务器用upstream指令绑定在一起,并起一个组名
+ * 然后用proxy_pass指向改组
+ */
+$arr = ['
+    log_format  main  \'$remote_addr - $remote_user [$time_local] "$request" \'
+                      \'$status $body_bytes_sent "$http_referer" \'
+                      \'"$http_user_agent" "$http_x_forwarded_for"\';
+    upstream imgserver {
+                server 192.168.200.130:81 weight=1 max_fails=2 fail_timeout=3;
+                server 192.168.200.130:82 weight=1 max_fails=2 fail_timeout=3;
+        }
+    server {
+            listen 81;
+            server_name localhost;
+            root html;
+            access_log logs/81-access.log main;
+    }
+    server {
+            listen 82;
+            server_name localhost;
+            root html;
+            access_log logs/82-access.log main;
+    }
+    location ~* \.(jpg|jpeg|gif|png) {
+                proxy_set_header X-Forwarded-For $remote_addr; //设置(传递)访问ip
+                proxy_pass http://imgserver;
+        }
+
+'];
+
 
 
 
