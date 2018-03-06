@@ -353,6 +353,15 @@ $arr = ['
 proxy_pass http://127.0.0.1:8080
 '];
 
+/**
+ * 15.域名重定向
+ */
+$arr = ['
+server { //在server内写
+    server_name www.example.com;
+    return 301 $scheme://example.com$request_uri;
+}
+'];
 
 
 

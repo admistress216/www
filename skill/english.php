@@ -14,4 +14,5 @@ $arr = [
     'wildcard' => '通配符',
     'batch' => '一批',
     'encryption' => '加密',
+    'codecs' => '编解码器',
 ];
