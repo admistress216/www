@@ -15,4 +15,6 @@ $arr = [
     'batch' => '一批',
     'encryption' => '加密',
     'codecs' => '编解码器',
+    'resolve' => '解析',
+    'frame' => '帧',
 ];
