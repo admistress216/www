@@ -50,7 +50,7 @@ $duration = $ffprobe
     ->format('/Users/cctv/Downloads/1.mp4') // extracts streams informations
 //    ->videos()                      // filters video streams
 //    ->first()                       // returns the first video stream
-    ->get('duration'); //提取属性,duration/filename(文件路径)/format_name(支持格式)/size(单位:字节)等
+    ->get('duration'); //提取属性,duration/filename(文件路径)/format_name(支持格式)/size(单位:字节)/bit_rate(码率/比特率bit per second)等
 /**
  * 属性信息
  */
