@@ -46,6 +46,7 @@ ngx.config.nginx_configure(), //编译时./configure命令选项
 $arr = ['
 local file, err = io.open(ngx.config.prefix().."data.db", "r")
 ngx.log(ngx.ERR, "open file err", err), //错误日志
+ngx.req.get_headers(), //返回一个包含当前请求头信息的lua table.
 
 ngx.exit(http-status), //结束请求并输出状态码,ngx.HTTP_SERVICE_UNAVAILABLE:503错误码
 ngx.flush(), //将缓冲区内容输出至页面
