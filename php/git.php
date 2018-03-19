@@ -39,3 +39,17 @@ Remote;
 $str = <<<Branch
 git branch -a //显示所有分支(remote-tracking and local)
 Branch;
+
+$str = <<<Add
+git add -p filename //将一个文件的变化分两次提交
+Add;
+
+$str = <<<Stash
+git stash //对workspace和index进行储藏(对newfile和local repository不进行储藏)
+git stash list //stash list
+git stash apply +stashname(如:stash@{1}) //应用stash(可以是别的分支),应用后stash仍然在栈上
+git stash drop stashname //移除栈stash
+git stash pop = git stash apply + git stash drop //应用并移除栈stash
+git stash branch testchanges //在testchanges分支上检出stash时的提交并apply stash,成功则丢弃stash
+Stash;
+
