@@ -12,6 +12,8 @@ $arr = [
  * 2.ordinary command
  */
 $arr = <<<Command
+keys *和smembers在集合中元素很多的情况下回产生堵塞,生产上禁用
+
 exists key,
 del key,
 type key, //返回key的类型
@@ -47,6 +49,13 @@ srem key [member1] [member2], //集合中去除成员
 substr key start end, //截取字符串,不改变字符串的值,下标从0开始
 setrange key offset value, //改写字符串
 getrange key start end, //getrange和substr功能类似
+spop key, //移除并返回集合中的一个随机元素。
+srandmember key, //返回随机元素,但不删除
+smove srckey dstkey member, //把member元素从srckey移动到detkey
+scard key, //返回key的大小
+sismember key member, //判断成员是否是key中的元素
+sinter key key1, //返回key和key1的交集,注:sunion为并集,sdiff差集
+sinterstore key key1 key2, //将key1和key2的交集置于key中
 
 Set;
 
@@ -108,6 +117,39 @@ list的头部,最后返回被移除的元素值，整个操作是原子的.如�
 摘录来自: Pengcheng Huang. “Redis开发运维实践指南”。 iBooks. 
 Blocking;
 
+/**
+ * 6.zset:有序集合操作
+ */
+$str = <<<Zadd
+zadd key score member [score member], //返回添加成功的个数,不包括更新,已存在的成员
+zrem key member [member], //删除key中成员
+zremrangebyrank/zremrangebyscore key min max, //按排名区间或分数区间删除
+zincrby key increment member, //给key中的member成员增加increment
+zscore key member, //返回key中member的分数
+zrank key member, //返回key的下标排名(从小到大排序)
+zrange key start end [withscores], //对key中指定区间展示(类似于list中的lrange)
+zrangebyscore key min max [withscore], //返回分数区间元素(inf为空),例子“zrangebyscore votes -inf inf withscores”
+zcount key min max, //score区间数量统计
+zcard key, //key中成员个数
+Zadd;
+
+/**
+ * 7.hash操作
+ */
+$str = <<<Hash
+hset(nx) key field value,
+hget key field, //获取值
+hmset key field value [field value], //设置多个field
+hmget key field [field], //获取多个field
+hincrby key field integer, //将指定的hash field(域)加上给定值
+hexists key field, //监测域是否存在
+hdel key field, //删除hash field
+hlen key, //返回域数量
+hkeys key, //返回所有域名
+hvals key, //返回所有域值
+hgetall key, //返回所有的field和value
+
+Hash;
 
 
 
