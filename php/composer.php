@@ -1,21 +1,27 @@
 <?php
 /**
+ * 1.composer下载
+ */
+$str = <<<Download
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+或者
+wget https://getcomposer.org/composer.phar
+mv composer.phar /usr/local/bin/composer
+Download;
+
+/**
+ * 2.中国镜像全局配置
+ */
+$str = <<<Global
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+Global;
+
+
+
+/**
  *
                        composer自动加载功能
-
-安装:
-curl -sS https://getcomposer.org/installer | php mv composer.phar
- 或者wget https://getcomposer.org/composer.phar
-mv composer.phar /usr/local/bin/composer
-
-
-方法一： 修改 composer 的全局配置文件
-打开命令行窗口（windows用户）或控制台（Linux、Mac 用户）并执行如下命令：
-
-composer config -g repo.packagist composer https://packagist.phpcomposer.com
-
-
-
 二、
 
 1.首选新建一个PHP项目文件夹
