@@ -89,3 +89,14 @@ mysql -u root -p  -P port //登录
 -DWITH_PARTITION_STORAGE_ENGINE=1 //安装数据库分区
 -DINSTALL_PLUGINDIR=/usr/local/mysql/plugin //插件文件及配置路径
 '];
+
+/**
+ * 4.设置自动登录
+ */
+$arr = <<<Login
+方法一(先生成.ssh(ssh-keygen -t rsa -P '')再执行一下命令):
+ssh-copy-id -i ~/.ssh/id_rsa.pub 用户名@对方机器IP (注意不要忘记了参数-i)
+
+方法二:
+将公钥直接拷贝到~/.ssh/authorized_keys(先用方法一生成,搞权限配置太麻烦)
+Login;
