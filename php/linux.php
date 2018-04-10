@@ -1,6 +1,7 @@
 <?php
 /**
  * 1.rsync同步命令
+ * 类似的命令scp,赋值目录/文件(scp -r ....)
  */
 $arr = [
     '-e + ssh/rsh' => '指定使用rsh或ssh传输数据',

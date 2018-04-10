@@ -5,7 +5,7 @@
 $arr = [
     'addr' => 'nginx.org',
     './configure --prefix=/usr/local/nginx',
-    'yum -y install pcre pcre-devel', //缺少pcre(用于正则)的情况
+    'yum -y install pcre pcre-devel zlib-devel', //缺少pcre(用于正则)和zlib(压缩算法)的情况
     'make && make install',
     './nginx', //启动
     'netstat -antp', //查看端口和占用程序
@@ -278,6 +278,9 @@ yum -y install libxml2-devel
 编译php(连接mysql,gd,ttf并以fpm/fastcgi方式运行)[nginx方式]:
 ./configure --prefix=/usr/local/fastphp --with-mysql=mysqlnd \
 --enable-mysqlnd \
+--enable-pdo \
+--with-pdo-mysql \
+--with-mysqli \
 --with-gd \
 --enable-gd-native-ttf \
 --enable-gd-jis-conv \
@@ -286,14 +289,18 @@ yum -y install libxml2-devel
 [apache方式]:
 ./configure --prefix=/usr/local/php --with-mysql=mysqlnd \
 --enable-mysqlnd \
+--enable-pdo \
+--with-pdo-mysql \
+--with-mysqli \
 --with-gd \
 --enable-gd-native-ttf \
 --enable-gd-jis-conv \
 --with-apxs2=/usr/local/httpd/bin/apxs //作用:将php作为apache子模块
 
-cp /usr/local/src/php-5.6.33/php.ini-development /usr/local/fastphp/lib/php.ini
+make && make install
+cp /usr/local/src/php-5.6.35/php.ini-development /usr/local/fastphp/lib/php.ini
 cp /usr/local/fastphp/etc/php-fpm.conf.default /usr/local/fastphp/etc/php-fpm.conf
-./php-fpm && ps aux | grep php
+/usr/local/fastphp/sbin/php-fpm && ps aux | grep php
 service mysqld start #启动mysql
 pkill -9 php-fpm #杀死php进程',
 ];
