@@ -103,10 +103,15 @@ source /etc/profile //设置环境变量,方便客户端启动
 --datadir=/data/mysql/data
 
 vim /etc/my.cnf
+[mysqld]
 user=mysql
 basedir=/usr/local/mysql
 default-storage-engine=Innodb
 datadir=/data/mysql/data //放置于mysql模块
+socket=/data/mysql/mysql.sock
+[mysql]
+socket=/data/mysql/mysql.sock
+
 service mysqld reload
 service mysqld start
 
