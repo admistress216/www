@@ -21,3 +21,15 @@ ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
 Install;
 
+/**
+ * 2.py引包
+ */
+$packadge = <<<Package
+import math
+print(math.pi)
+等价于
+from math import pi
+print(pi)
+Package;
+
+
