@@ -12,6 +12,15 @@ local page = args["page"] and tonumber(args["page"]) or 1
 '];
 
 /**
+ * 1.1 ngx.var.arg_name和ngx.req.get_uri_args()的区别
+ */
+$arr = <<<Diff
+ngx.var.arg_name 无法判断http://localhost?name和http://localhost?name=2&name=3的情况
+ngx.req.get_uri_args()可以,他们两个都是ngx_lua模块的内容
+Diff;
+
+
+/**
  * 2.指令和API
  */
 $arr = [
