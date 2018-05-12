@@ -244,6 +244,8 @@ $request_uri：/test1/test2/test.php?k=v
 $document_uri：/test1/test2/test.php
 $document_root：D:\nginx/html
 $request_filename：D:\nginx/html/test1/test2/test.php
+$1:匹配正则表达式匹配的第一个值,$2..以此类推
+$host:访问域名或ip,curl "http://localhost/lua_request/1/2":localhost,curl "http://127.0.0.1/lua_request/1/2":127.0.0.1, 浏览器访问http://192.168.200.130/lua_request/1/2:显示192.168.200.130
 '];
 
 /**

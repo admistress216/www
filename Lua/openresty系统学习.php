@@ -34,4 +34,37 @@ ngx.var[2] //获取nginx location中正则捕获组
 
 ngxLua;
 
+/**
+ * 5.配置实操
+ */
+$config = <<<'Config'
+/usr/servers/nginx/conf/nginx.conf配置文件如下(此处我们最小化了配置文件):
+#user  nobody;  
+worker_processes  2;  
+error_log  logs/error.log;  
+events {  
+    worker_connections  1024;  
+}  
+http {  
+    include       mime.types;  
+    default_type  text/html;  
+  
+    #lua模块路径，其中”;;”表示默认搜索路径，默认到/usr/servers/nginx下找  
+    lua_package_path "/usr/example/lualib/?.lua;;";  #lua 模块  
+    lua_package_cpath "/usr/example/lualib/?.so;;";  #c模块  
+    include /usr/example/example.conf;  
+}
+
+/usr/example/example.conf配置文件如下:
+server {  
+    listen       80;  
+    server_name  _;  
+  
+    location /lua {  
+        default_type 'text/html';  
+        lua_code_cache off;  #清除lua的缓存,防止每次都重启nginx,线上打开
+        content_by_lua_file /usr/example/lua/test.lua;  
+    }  
+}  
+Config;
 
