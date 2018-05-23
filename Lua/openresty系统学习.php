@@ -73,6 +73,16 @@ ngx.re.match：nginx正则表达式匹配；
 
 -- 共享全局变量，在所有worker间共享(http部分)  
 lua_shared_dict shared_data 1m; --其中shared_data为共享名称
+example.lua:
+local shared_data = ngx.shared.shared_data
+local i = shared_data:get("i")
+if not i then
+        i = 1
+        shared_data:set("i",i)
+        ngx.say("lazy set i ",i,"<br/>")
+end
+i = shared_data:incr("i",1)
+ngx.say("i=",i,"<br/>")
 ngxLua;
 
 /**

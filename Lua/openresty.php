@@ -21,15 +21,6 @@ Diff;
 
 
 /**
- * 2.指令和API
- */
-$arr = [
-    'lua_shared_dict' => '创建全局共享的table（多个worker进程共享）',
-    'ngx.md5()' => '返回16进制MD5',
-
-];
-
-/**
  * 3.json化
  */
 $arr = ['
