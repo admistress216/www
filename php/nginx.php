@@ -276,6 +276,9 @@ yum -y install gd gd-devel
 yum install ttf
 yum install freetype
 yum -y install libxml2-devel
+wget https://curl.haxx.se/download/curl-7.60.0.tar.gz
+tar zxvf curl-7.60.0.tar.gz && cd curl-7.60.0
+./configure --prefix=/usr/local/curl && make && make install
 
 编译php(连接mysql,gd,ttf并以fpm/fastcgi方式运行)[nginx方式]:
 ./configure --prefix=/usr/local/fastphp --with-mysql=mysqlnd \
@@ -284,12 +287,15 @@ yum -y install libxml2-devel
 --with-pdo-mysql \
 --with-mysqli \
 --with-gd \
+--with-freetype-dir=/usr/include/freetype2/freetype \
+--with-curl=/usr/local/curl \
 --enable-gd-native-ttf \
 --enable-gd-jis-conv \
---enable-fpm      #作用:产生php-fpm进程管理器以及配置文件
+--enable-fpm  #作用:产生php-fpm进程管理器以及配置文件
+    
 
 [apache方式]:
-./configure --prefix=/usr/local/php --with-mysql=mysqlnd \
+./configure --prefix=/usr/local/fastphp --with-mysql=mysqlnd \
 --enable-mysqlnd \
 --enable-pdo \
 --with-pdo-mysql \
@@ -300,11 +306,12 @@ yum -y install libxml2-devel
 --with-apxs2=/usr/local/httpd/bin/apxs //作用:将php作为apache子模块
 
 make && make install
-cp /usr/local/src/php-5.6.35/php.ini-development /usr/local/fastphp/lib/php.ini
+cp /usr/local/src/php-5.6.36/php.ini-development /usr/local/fastphp/lib/php.ini
 cp /usr/local/fastphp/etc/php-fpm.conf.default /usr/local/fastphp/etc/php-fpm.conf
 /usr/local/fastphp/sbin/php-fpm && ps aux | grep php
 service mysqld start #启动mysql
 pkill -9 php-fpm #杀死php进程',
+
 ];
 
 /**

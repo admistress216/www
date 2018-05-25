@@ -13,7 +13,7 @@ Operation;
  */
 $arr1 = <<<Install
 groupadd mysql
-useradd -g group -s /sbin/nologin -M mysql, //-s:定义shell,-M : 不建立根目录,-g:指定组
+useradd -g mysql -s /sbin/nologin -M mysql, //-s:定义shell,-M : 不建立根目录,-g:指定组
 mkdir -p /data/mysql/data,
 chown -R mysql:mysql /data/mysql,
 
@@ -130,3 +130,14 @@ mysql -u root -p  -P port //登录
 -DWITH_PARTITION_STORAGE_ENGINE=1 //安装数据库分区
 -DINSTALL_PLUGINDIR=/usr/local/mysql/plugin //插件文件及配置路径
 Cmake;
+
+/**
+ * 3.设置外部访问
+ *
+ */
+
+$out = <<<Out
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456aA' WITH GRANT OPTION;
+flush privileges;
+Out;
+
