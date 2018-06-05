@@ -1,4 +1,13 @@
 <?php
+/**
+ * 1.install
+ */
+$install = <<<Install
+安装yasm(不指定安装路径)
+安装ff
+Install;
+
+
 require 'vendor/autoload.php'; //使用composer安装的
 //$ffmpeg = FFMpeg\FFMpeg::create(array(
 //    'ffmpeg.binaries'  => '/usr/local/Cellar/ffmpeg/3.4.2/bin/ffmpeg',

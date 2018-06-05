@@ -120,3 +120,14 @@ function str_split_unicode($str, $l = 0) {
     }
     return preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY);
 }
+
+
+//判断是否是https
+function isHttps()
+{
+    if (!isset($_SERVER['HTTPS'])) return false;
+
+    if ($_SERVER['HTTPS'] === 1 || $_SERVER['HTTPS'] === 'on' || $_SERVER['SERVER_PORT'] === 443) return true;
+
+    return false;
+}
