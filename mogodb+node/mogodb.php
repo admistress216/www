@@ -14,13 +14,14 @@ mongorestore:数据库整体导入
 mongos:路由器(分片时用,集群)
 3.启动mongodb服务:
 ./bin/mongod --dbpath /path/to/database --logpath /path/to/log --fork --port 27017
-例如:./bin/mongod --dbpath /home/m17/ --logpath /home/mlog/m17.log --fork --port 27017(mkdir /home/m17/ /home/mlog)
+例如:./bin/mongod --dbpath /home/m17/ --logpath /home/mlog/m17.log --fork --port 27017 --bind_ip_all(mkdir /home/m17/ /home/mlog)
 ./bin/mongo 启动客户端
 解释:
 --dbpath 数据库存储目录
 --logpath 日志存储目录
 --port 运行端口(默认27017)
 --fork 后台进程进行
+--bind_ip_all 允许远程访问(默认绑定本机)
 --smallfiles 小空间占用形式启动(用于虚拟机磁盘空间不够时)
 4.mongodb数据库非常耗磁盘空间,一般刚安装占用3-4G(du -h [dbpath])
 
