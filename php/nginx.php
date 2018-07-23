@@ -330,7 +330,7 @@ gzip on; #打开gzip
 gzip_buffers 32 4k; #压缩在内存中缓冲32块,每块4k
 gzip_comp_level 6; #压缩级别6
 gzip_min_length 4000; #最少四千字节开始压缩
-gzip_types text/css text/xml application/x-javascript; #压缩的格式
+gzip_types text/css text/xml application/javascript application/x-javascript text/javascript image/jpeg image/gif image/png; #压缩的格式,都是header头中的Content-type
 '];
 
 /**

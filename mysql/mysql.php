@@ -97,7 +97,7 @@ default-storage-engine=Innodb
 datadir=/data/mysql/data //放置于mysql模块
 socket=/data/mysql/mysql.sock
 [mysql]
-socket=/data/mysql/mysql.sock
+socket=/data/mysql/mysql.sock //注意放在最下方
 
 service mysqld reload
 service mysqld start
