@@ -273,8 +273,7 @@ $arr = [
 yum install mysql mysql-devel //装客户端
 yum -y install mysql-server //装服务端
 yum -y install gd gd-devel
-yum install ttf
-yum install freetype
+yum -y install ttf freetype
 yum -y install libxml2-devel
 wget https://curl.haxx.se/download/curl-7.60.0.tar.gz --no-check-certificate
 tar zxvf curl-7.60.0.tar.gz && cd curl-7.60.0
