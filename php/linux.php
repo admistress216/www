@@ -29,3 +29,18 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub 用户名@对方机器IP (注意不要忘记了
 方法二:
 将公钥直接拷贝到~/.ssh/authorized_keys(先用方法一生成,搞权限配置太麻烦)
 Login;
+
+/**
+ * 5.yum初始化环境安装
+ */
+$arr = <<<Yum
+yum -y install gcc automake autoconf libtool make
+ 
+yum -y install gcc gcc-c++ glibc
+ 
+yum -y install libmcrypt-devel mhash-devel libxslt-devel 
+libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel 
+zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel 
+ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel 
+krb5 krb5-devel libidn libidn-devel openssl openssl-devel
+Yum;
