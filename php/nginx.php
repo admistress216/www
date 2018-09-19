@@ -313,7 +313,7 @@ tar zxvf curl-7.60.0.tar.gz && cd curl-7.60.0
 --with-apxs2=/usr/local/httpd/bin/apxs //作用:将php作为apache子模块
 
 make && make install
-cp /usr/local/src/php-5.6.36/php.ini-development /usr/local/`php/lib/php.ini
+cp /usr/local/src/php-5.6.36/php.ini-development /usr/local/php/etc/php.ini
 cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
 /usr/local/php/sbin/php-fpm && ps aux | grep php
 service mysqld start #启动mysql
