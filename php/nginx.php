@@ -280,7 +280,7 @@ tar zxvf curl-7.60.0.tar.gz && cd curl-7.60.0
 ./configure --prefix=/usr/local/curl && make && make install
 
 编译php(连接mysql,gd,ttf并以fpm/fastcgi方式运行)[nginx方式]:
-./configure --prefix=/usr/local/php --with-mysql=mysqlnd \
+./configure --prefix=/usr/local/php \
 --with-config-file-path=/usr/local/php/etc \
 --enable-mysqlnd \
 --enable-pdo \
@@ -292,7 +292,6 @@ tar zxvf curl-7.60.0.tar.gz && cd curl-7.60.0
 --enable-zip \
 --with-freetype-dir=/usr/include/freetype2/freetype \
 --with-curl=/usr/local/curl \
---enable-gd-native-ttf \
 --enable-gd-jis-conv \
 --enable-fpm  #作用:产生php-fpm进程管理器以及配置文件
 
