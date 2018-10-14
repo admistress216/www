@@ -281,6 +281,7 @@ tar zxvf curl-7.60.0.tar.gz && cd curl-7.60.0
 --with-config-file-path=/usr/local/php/etc \
 --enable-mysqlnd \
 --enable-pdo \
+--enable-mbstring \
 --with-pdo-mysql \
 --with-mysqli \
 --with-gd \
@@ -308,6 +309,13 @@ tar zxvf curl-7.60.0.tar.gz && cd curl-7.60.0
 --enable-gd-native-ttf \
 --enable-gd-jis-conv \
 --with-apxs2=/usr/local/httpd/bin/apxs //作用:将php作为apache子模块
+
+configure: error: Cannot find OpenSSL's <evp.h>报错解决:
+windows:
+yum -y install openssl-devel
+mac:
+brew upgrade openssl
+--with-openssl=/usr/local/Cellar/openssl/1.0.2p
 
 make && make install
 cp /usr/local/src/php-7.2.10/php.ini-development /usr/local/php/etc/php.ini
